@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Primary brand colors */
+    --background: 220 100% 98.8%; /* #FAFBFF */
+    --foreground: 220 15% 20%;
+
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 220 15% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 20%;
+
+    /* Primary: #2563EB (soft blue) */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 217 91% 55%;
+
+    /* Secondary: #00B3C6 (teal) */
+    --secondary: 185 100% 38%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Accent: #FFD166 (warm highlight) */
+    --accent: 43 96% 70%;
+    --accent-foreground: 220 15% 20%;
+
+    /* Navy for headers: #0B2545 */
+    --navy: 210 60% 15%;
+    --navy-foreground: 0 0% 100%;
+
+    /* Card secondary background */
+    --card-secondary: 220 20% 96%;
+    --card-secondary-foreground: 220 15% 20%;
+
+    /* Muted: #6B7280 */
+    --muted: 220 15% 94%;
+    --muted-foreground: 220 10% 45%;
+
+    /* Success: #1FA855 */
+    --success: 145 70% 38%;
+    --success-foreground: 0 0% 100%;
+
+    /* Danger: #E64A4A */
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 90%;
+    --input: 220 20% 90%;
+    --ring: 210 65% 50%;
+
+    --radius: 0.5rem;
+
+    /* Motion tokens */
+    --motion-fast: 0.12s;
+    --motion-normal: 0.24s;
+    --motion-slow: 0.42s;
+    --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 220 10% 95%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 220 10% 95%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 220 10% 95%;
+
+    --primary: 210 70% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 210 70% 50%;
+
+    --accent: 210 75% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 220 10% 95%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 65%;
+
+    --success: 145 65% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 210 70% 55%;
+    
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 220 10% 95%;
+    --sidebar-primary: 210 70% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 220 10% 95%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 210 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-weight: 600;
+    color: hsl(var(--navy));
+  }
+}
+
+@layer utilities {
+  .motion-safe {
+    transition-timing-function: var(--motion-ease);
+  }
+
+  .motion-fast {
+    transition-duration: var(--motion-fast);
+  }
+
+  .motion-normal {
+    transition-duration: var(--motion-normal);
+  }
+
+  .motion-slow {
+    transition-duration: var(--motion-slow);
+  }
+
+  /* Glassmorphism */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-dark {
+    background: rgba(11, 37, 69, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Glowing borders */
+  .glow-border {
+    box-shadow: 0 0 12px rgba(0, 142, 255, 0.2);
+  }
+
+  .glow-border-primary {
+    box-shadow: 0 0 16px rgba(37, 99, 235, 0.3);
+  }
+
+  .glow-border-accent {
+    box-shadow: 0 0 16px rgba(255, 209, 102, 0.3);
+  }
+
+  /* Gradient backgrounds */
+  .gradient-primary {
+    background: linear-gradient(135deg, #2563EB 0%, #00B3C6 100%);
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, #FFD166 0%, #FFB347 100%);
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    transition: transform 0.3s var(--motion-ease), box-shadow 0.3s var(--motion-ease);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Ripple effect */
+  .ripple {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .ripple:active::after {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Pulse animation for icons */
+  .pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+    }
+    50% {
+      opacity: 0.8;
+      box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
+    }
+  }
+
+  /* Number counter animation */
+  .count-up {
+    animation: count-up 1s ease-out;
+  }
+
+  @keyframes count-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Shimmer loading effect */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 0%,
+      hsl(var(--muted) / 0.5) 50%,
+      hsl(var(--muted)) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Magnetic hover effect */
+  .magnetic {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Context-aware glow */
+  .context-glow-success {
+    box-shadow: 0 0 20px rgba(31, 168, 85, 0.3);
+  }
+
+  .context-glow-warning {
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
+  }
+
+  /* Adaptive gradient animation */
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .gradient-animated {
+    background: linear-gradient(135deg, #2563EB 0%, #00B3C6 50%, #2563EB 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 5s ease infinite;
+  }
+
+  .animate-gradient-shift {
+    background-size: 200% auto;
+    animation: gradient-shift 3s linear infinite;
+  }
+
+  /* Success micro-bounce */
+  @keyframes micro-bounce {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-2px) scale(1.05);
+    }
+  }
+
+  .micro-bounce {
+    animation: micro-bounce 0.3s ease;
+  }
+}
