@@ -270,33 +270,36 @@ const Landing = () => {
               </motion.div>
             </motion.div>
 
-            {/* Right - Dashboard Preview */}
+            {/* Right - Landing Image */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="relative"
             >
               <motion.div
-                className="glass rounded-2xl border border-border/50 p-6 shadow-2xl"
+                className="relative"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="grid grid-cols-3 gap-3 mb-4">
-                  {[1, 2, 3].map((i) => (
-                    <motion.div
-                      key={i}
-                      className="h-20 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl"
-                      animate={{ y: [0, -10, 0] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-                    />
-                  ))}
-                </div>
-                <div className="h-32 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl" />
+                <motion.img
+                  src="/landing_image.png"
+                  alt="SmartBiz GST Platform"
+                  className="w-full h-auto rounded-2xl shadow-2xl"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                />
                 <motion.div
                   className="absolute -bottom-4 -right-4 w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-glow-primary"
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  animate={{ 
+                    rotate: [0, 360],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{ 
+                    rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                    scale: { duration: 2, repeat: Infinity }
+                  }}
                 >
                   <Sparkles className="h-10 w-10 text-white" />
                 </motion.div>
@@ -313,10 +316,14 @@ const Landing = () => {
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                initial={{ opacity: 0, y: 40, scale: 0.8 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
                 className="text-center"
               >
                 <motion.div
@@ -347,25 +354,48 @@ const Landing = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ 
+              duration: 0.7,
+              ease: [0.22, 1, 0.36, 1]
+            }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">Everything You Need to Grow</h2>
-            <p className="text-xl text-muted-foreground">Powerful features designed for Indian businesses</p>
+            <motion.h2 
+              className="text-4xl font-bold mb-4"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              Everything You Need to Grow
+          </motion.h2>
+            <motion.p 
+              className="text-xl text-muted-foreground"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              Powerful features designed for Indian businesses
+            </motion.p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.08,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                whileHover={{ scale: 1.05, y: -8 }}
                 className="hover-lift"
               >
                 <Card className="glass rounded-2xl border-border/50 h-full overflow-hidden relative group cursor-pointer">
@@ -391,26 +421,50 @@ const Landing = () => {
       <section className="py-20 px-4 bg-card/30">
         <div className="container mx-auto">
           <motion.div
-                initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ 
+              duration: 0.7,
+              ease: [0.22, 1, 0.36, 1]
+            }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">Trusted by Shopkeepers Across India</h2>
-            <p className="text-xl text-muted-foreground">See what our users say</p>
+            <motion.h2 
+              className="text-4xl font-bold mb-4"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              Trusted by Shopkeepers Across India
+            </motion.h2>
+            <motion.p 
+              className="text-xl text-muted-foreground"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              See what our users say
+            </motion.p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02, y: -5 }}
+                initial={{ opacity: 0, y: 50, rotateX: -15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ 
+                  duration: 0.7, 
+                  delay: index * 0.15,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                whileHover={{ scale: 1.03, y: -8, rotateY: 2 }}
                 className="hover-lift"
+                style={{ perspective: 1000 }}
               >
                 <Card className="glass rounded-2xl border-border/50 h-full">
                   <CardContent className="p-6">
@@ -436,10 +490,13 @@ const Landing = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, scale: 0.9, y: 50 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ 
+              duration: 0.8,
+              ease: [0.22, 1, 0.36, 1]
+            }}
             className="glass rounded-2xl border border-border/50 p-12 text-center relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 opacity-50" />
