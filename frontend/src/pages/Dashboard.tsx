@@ -5,6 +5,7 @@ import DashboardLayout from "@/components/DashboardLayout";
 import { UiButton } from "@/components/ui/ui-button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import SmartSuggestion from "@/components/SmartSuggestion";
+import QuickAddZone from "@/components/QuickAddZone";
 import {
   Plus,
   ShoppingCart,
@@ -350,6 +351,20 @@ const Dashboard = () => {
             </Card>
           </motion.div>
         </div>
+
+        {/* Quick Add Zone */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.42, delay: 0.36 }}
+          className="mt-12"
+        >
+          <QuickAddZone 
+            title="Quick Add Zone" 
+            limit={6}
+            className="mb-8"
+          />
+        </motion.div>
     </DashboardLayout>
   );
 };

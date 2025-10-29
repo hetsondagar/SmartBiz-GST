@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { UiButton } from "@/components/ui/ui-button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import QuickAddZone from "@/components/QuickAddZone";
 import { 
   ArrowRight, 
   CheckCircle, 
@@ -414,6 +415,17 @@ const Landing = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Quick Add Zone */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
+          <QuickAddZone 
+            title="Explore Nearby Offers" 
+            limit={6}
+            showAll={false}
+          />
         </div>
       </section>
 

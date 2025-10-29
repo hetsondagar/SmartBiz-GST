@@ -1,7 +1,8 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { UiButton } from "./ui/ui-button";
+import QuickAdd from "./QuickAdd";
 import {
   Package,
   ShoppingCart,
@@ -24,6 +25,7 @@ interface DashboardLayoutProps {
 
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const location = useLocation();
+  const [isQuickAddOpen, setIsQuickAddOpen] = useState(false);
 
   const navItems = [
     { path: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -75,6 +77,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
                 icon={<Plus className="h-4 w-4" />}
                 aria-label="Quick add"
                 className="gradient-primary hover:shadow-glow-primary transition-all"
+                onClick={() => setIsQuickAddOpen(true)}
               >
                 <span className="hidden sm:inline">Quick Add</span>
               </UiButton>
@@ -153,6 +156,16 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">{children}</main>
+
+      {/* Quick Add Modal */}
+      <QuickAdd
+        isOpen={isQuickAddOpen}
+        onClose={() => setIsQuickAddOpen(false)}
+        onSubmit={(data) => {
+          console.log("Quick Add submitted:", data);
+          // Handle submission logic here
+        }}
+      />
     </div>
   );
 };
